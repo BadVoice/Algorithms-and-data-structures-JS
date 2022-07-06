@@ -19,27 +19,7 @@ const render = (arrNum) => {
 }
 render(arrNum)
 
-let titleQuestion = prompt('как называется наш проект')
-let screensQuestion = prompt('Какие типы экранов нужно разработать?')
-let screenPriceQuestion = prompt('Сколько будет стоить данная работа?')
 
-let serviceQuestion = prompt('Какой дополнительный тип услуги нужен?')
-let firstServiceQuestion = prompt('Введите название услуги')
-let secondServiceQuestion = prompt('Сколько это будет стоить?')
-
-let rollbackQuestion = prompt('Нужен ли адаптив на сайте?')
-let fullPriceQuestion = prompt('как называется наш проект')
-let adaptiveQuestion = prompt('как называется наш проект')
-
-
-let title = titleQuestion
-let screens = screensQuestion
-let screenPrice = screenPriceQuestion
-let rollback = rollbackQuestion
-
-
-let fullPrice = screenPrice + firstServiceQuestion + secondServiceQuestion
-let adaptive = adaptiveQuestion
 
 
 const parseIntQuestion = (question) => {
