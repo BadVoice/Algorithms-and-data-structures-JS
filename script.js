@@ -1,75 +1,31 @@
-const script = () => {
-    const btnInc = document.querySelector('.inc')
-    const btnDec = document.querySelector('.dec')
-    const wrapperCounter = document.querySelector('.wrapper__counter')
-    let heal = 3
-    let max = 3
-    const result = Math.round(Math.random() * max)
-    const result2 = Math.round(Math.random() * max)
-    const result3 = Math.round(Math.random() * max)
-    let answer2
-    let answer3
-    while (heal > 0) {
-
-        let answer = +prompt('1 lvl Введи от 0 до 3')
-
-        if (answer === result) {
-            answer2 = +prompt('2 lvl Введи от 0 до 3')
-        } else if (answer !== result) {
-            heal -= 1
+const level = (level = 3) => {
+    const damage = 1;
+    let hitpoints = 3;
+    // Угадываем пока HP > 0
+    while (hitpoints > 0) {
+        const question = Math.floor(Math.random() * level); // рандомное значение 
+        const answer = +prompt(
+            `2 lvl От ${1} до ${level}. У тебя ${"♥".repeat(hitpoints)}`
+        ); // вводим свое значение 
+        if (question !== answer) {
+            hitpoints -= damage;
+        } else {
+            // Прошли
+            return true;
         }
-
-        if (result2 === answer2) {
-            answer3 = +prompt('3 lvl Введи от 0 до 3')
-        } else if (answer2 !== result2) {
-            heal -= 1
-        }
-
-        if (result3 === answer3) {
-            confirm = +prompt('Конец')
-        } else if (answer2 !== result2) {
-            heal -= 1
-        }
-
-        console.log(result)
-        console.log(result2)
-        console.log(result3)
     }
 
+    // Умерли
+    return false;
+};
 
+const game = () => {
+    const levelResult = level();
+    if (levelResult) {
+        alert("Прошел");
+    } else {
+        alert("Не прошел");
+    }
+};
 
-
-
-
-
-    // const renderCount = () => {
-    //     wrapperCounter.innerHTML = `
-    //         <p class="counter">${count}</p>
-    //         `
-    //     const counter = document.querySelector('.counter')
-    //     console.dir(counter)
-    // }
-    // renderCount()
-
-    // const counterInc = () => {
-    //     count++
-    // }
-
-    // const counterDec = () => {
-    //     count--
-    //     if (count < 0) count = 0
-    // }
-
-    // btnInc.addEventListener('click', (e) => {
-    //     e.preventDefault()
-    //     counterInc()
-    //     renderCount()
-    // })
-
-    // btnDec.addEventListener('click', (e) => {
-    //     e.preventDefault()
-    //     counterDec()
-    //     renderCount()
-    // })
-}
-script()
+game()
