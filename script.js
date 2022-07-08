@@ -1,31 +1,64 @@
-const level = (level = 3) => {
-    const damage = 1;
-    let hitpoints = 3;
-    // Угадываем пока HP > 0
-    while (hitpoints > 0) {
-        const question = Math.floor(Math.random() * level); // рандомное значение 
-        const answer = +prompt(
-            `2 lvl От ${1} до ${level}. У тебя ${"♥".repeat(hitpoints)}`
-        ); // вводим свое значение 
-        if (question !== answer) {
-            hitpoints -= damage;
+const game = () => {
+    let lvl = 3
+    let HP = 3
+    let damage = 1
+    let lvlCounter = 1
+
+    while (HP > 0) {
+        let randomValue = Math.floor(Math.random() * lvl)
+        console.log(randomValue)
+        let answer = +input
+        console.log(answer)
+
+
+
+        if (randomValue !== answer) {
+            HP = HP - damage
         } else {
-            // Прошли
-            return true;
+            alert('Ygadal')
+            lvlCounter++
+            lvl++
+            HP = 3
+        }
+
+        if (HP === 0) {
+            alert('Закончились жизни')
+
+        }
+
+        if (lvlCounter === 6) {
+            alert('Прошел игру')
+            return true
         }
     }
+}
 
-    // Умерли
-    return false;
-};
+const input = document.querySelector('.input').value;
 
-const game = () => {
-    const levelResult = level();
-    if (levelResult) {
-        alert("Прошел");
-    } else {
-        alert("Не прошел");
+const startRenderGame = () => {
+    const btnStart = document.querySelector('.start')
+    const btnEnd = document.querySelector('.end')
+    let obj = {
+        lvl: 3,
+        HP: 3,
+        lvlCounter: 1
     }
-};
+    const wrapperGame = document.querySelector('.wrapper__game')
 
-game()
+    let div = document.createElement('div')
+
+    div.innerHTML = ` 
+            <p>Lvl ${obj.lvlCounter}  уагадайте число от 1 до ${obj.lvl} ${'❤'.repeat(obj.HP)}</p>
+
+                    `
+
+    btnStart.addEventListener('click', () => {
+        wrapperGame.append(div)
+        game()
+    })
+
+    btnEnd.addEventListener('click', () => {
+        div.remove()
+    })
+}
+startRenderGame()
