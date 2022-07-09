@@ -40,3 +40,14 @@ body {}
     display: flex;
     flex-direction: row;
 }
+
+.postValueBtn {
+    width: 75px;
+    height: 25px;
+}
+
+.container-post {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
